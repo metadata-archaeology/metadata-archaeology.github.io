@@ -319,11 +319,6 @@
   display: none; /* Hide columns by default */
 }
 
-.column_portfolio_visible {
-  float: left;
-  width: 50.00%;
-}
-
 .column_portfoliofinal {
   float: left;
   width: 100.00%;
@@ -345,11 +340,6 @@
   float: left;
   width: 100.00%;
   display: none; /* Hide columns by default */
-}
-
-.column_header_visible {
-  float: left;
-  width: 100.00%;
 }
 
 .column_headerfinal {
@@ -396,7 +386,7 @@
 .content_reduced_slightly {
   background-color: white;
   padding: 2px;
-  width: 100%;
+  width: 95%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -437,14 +427,6 @@
 { background:linear-gradient(to right, #666 3%, #666  100%);
   color: white;
   cursor:none;
-}
-
-.figcaption_heading {
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 32px;
-   font-weight: bold;
-  line-height: 1.5em;
-  text-align: center;
 }
 
 figcaption,
@@ -497,13 +479,13 @@ figcaption .strong_, {
              <p> We curate different subsets of data that might exist in a dataset (e.g.\ mislabeled, atypical, or out-of-distribution examples) using simple transformations, and leverage differences in learning dynamics between these curated subsets to infer metadata of interest. We compare loss trajectories against our curated subsets in order to identify training examples with similar metadata, and show that this simple approach is on par with far more sophisticated mitigation methods across different tasks: identifying and correcting mislabeled examples, identifying minority-group samples, prioritizing points relevant for training and enabling scalable human auditing of relevant examples.</p>
              
                  <div class="content_reduced_slightly">
-     <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_999_toilet tissue_typical.png" alt="abstract_typical" style="width:22%">
+     <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_999_toilet tissue_typical.png" alt="abstract_typical" style="width:22%">
      &nbsp;&nbsp;&nbsp;
-     <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_999_toilet tissue_corrupted.png" alt="abstract_corrupted" style="width:22%">
+     <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_999_toilet tissue_corrupted.png" alt="abstract_corrupted" style="width:22%">
      &nbsp;&nbsp;&nbsp;
-     <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_999_toilet tissue_atypical.png" alt="abstract_atypical" style="width:22%">
+     <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_999_toilet tissue_atypical.png" alt="abstract_atypical" style="width:22%">
      &nbsp;&nbsp;&nbsp;
-     <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_999_toilet tissue_random_outputs.png" alt="abstract_random_outputs" style="width:22%">
+     <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_999_toilet tissue_random_outputs.png" alt="abstract_random_outputs" style="width:22%">
       <div class="figcaption">
          <strong_>MAP-D can surface interesting examples from the different probe categories starting from typical, corrupted, atypical, and random outputs probe categories (see paper for a detailed discussion regarding the probe categories). The example difficulty rises monotonically from typical to random outputs category (loss profiles are also sorted accordingly).</strong_><br>
        </div>
@@ -530,30 +512,32 @@ figcaption .strong_, {
         <p> MAP-D can be an effective tool to audit high-dimensional datasets. Below, we plot images from four different probe categories (i.e., typical, atypical, corrupted inputs, and random outputs probe categories) for randomly selected classes from CIFAR-10, CIFAR-100 and ImageNet. </p>
 
 <br>
+<strong_>Click below.</strong_>
+<div id="myBtnContainer_1">
+  <button class="btn active_1" onclick="filterSelection('typical')"> Typical </button>
+  <button class="btn" onclick="filterSelection('corrupted')"> Corrupted </button>
+  <button class="btn" onclick="filterSelection('atyp')"> Atypical </button>
+  <button class="btn" onclick="filterSelection('random_outputs')"> Random Outputs </button>
+<!--<hr>-->
+</div>
 
 <div class="row">
-  <div class="column_header_visible">
+  <div class="column_header_ typical">
      <div class="figcaption">
        <code>Examples surfaced via the `typical` probe category:</code> Images surfaced through the typical probe category are mostly well centered images with typical color scheme where the only object in the image is the object of interest.
      </div>
   </div>
-</div>
-<div class="row">
-  <div class="column_header_visible">
+  <div class="column_header_ corrupted">
     <div class="figcaption">
       <code>Examples surfaced via the `corrupted` probe category:</code> Images surfaced through the corrupted probe category has a slightly higher complexity than the images surfaced through the typical probe, while being slightly lower in complexity as compared to atypical examples. They form a natural transition between typical and atypical examples.
     </div>
  </div>
-</div>
-<div class="row">
- <div class="column_header_visible">
+ <div class="column_header_ atyp">
   <div class="figcaption">
     <code>Examples surfaced via the `atypical` probe category:</code> Images surfaced through the atypical probe category present the object in unusual settings or vantage points, or features differences in color scheme from the typical variants.
   </div>
 </div>
-</div>
-<div class="row">
-<div class="column_header_visible">
+<div class="column_header_ random_outputs">
   <div class="figcaption">
     <code>Examples surfaced via the `random outputs` probe category:</code> Images surfaced through the random outputs probe category represent images that would be hard for a human to classify, might contain multiple labels which are appropriate for that image, or might even be out-of-distribution w.r.t. the rest of the data distribution.
   </div>
@@ -570,105 +554,69 @@ figcaption .strong_, {
 
 </div>
 
-
-<div class="row">
-  <div class="column_portfolio_visible">
-    <div class="content">
-      <div class="figcaption_heading">
-        <code>Typical</code>
-      </div>
-    </div>
-  </div>
-  <div class="column_portfolio_visible">
-    <div class="content">
-      <div class="figcaption_heading">
-        <code>Corrupted</code>
-      </div>
-    </div>
-  </div>
-  <div class="column_portfolio_visible">
-    <div class="content">
-      <div class="figcaption_heading">
-        <code>Atypical</code>
-      </div>
-    </div>
-  </div>
-  <div class="column_portfolio_visible">
-    <div class="content">
-      <div class="figcaption_heading">
-        <code>Random Outputs</code>
-      </div>
-    </div>
-  </div>
-<!-- END GRID -->
-</div>
-
 <div class="row">
   <!-- Toilet Tissue -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_999_toilet tissue_typical.png" alt="typical_im_tissue" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_999_toilet tissue_typical.png" alt="typical_im_tissue" style="width:125%">
       <div class="figcaption">
         <code>Toilet Tissue</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_999_toilet tissue_corrupted.png" alt="corrupted_im_tissue" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_999_toilet tissue_corrupted.png" alt="corrupted_im_tissue" style="width:125%">
       <div class="figcaption">
         <code>Toilet Tissue</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_999_toilet tissue_atypical.png" alt="atypical_im_tissue" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_999_toilet tissue_atypical.png" alt="atypical_im_tissue" style="width:125%">
       <div class="figcaption">
         <code>Toilet Tissue</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_999_toilet tissue_random_outputs.png" alt="random_outputs_im_tissue" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_999_toilet tissue_random_outputs.png" alt="random_outputs_im_tissue" style="width:125%">
       <div class="figcaption">
         <code>Toilet Tissue</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Ambulance -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_407_ambulance_typical.png" alt="typical_im_ambulance" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_407_ambulance_typical.png" alt="typical_im_ambulance" style="width:125%">
       <div class="figcaption">
         <code>Ambulance</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_407_ambulance_corrupted.png" alt="corrupted_im_ambulance" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_407_ambulance_corrupted.png" alt="corrupted_im_ambulance" style="width:125%">
       <div class="figcaption">
         <code>Ambulance</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_407_ambulance_atypical.png" alt="atypical_im_ambulance" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_407_ambulance_atypical.png" alt="atypical_im_ambulance" style="width:125%">
       <div class="figcaption">
         <code>Ambulance</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_407_ambulance_random_outputs.png" alt="random_outputs_im_ambulance" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_407_ambulance_random_outputs.png" alt="random_outputs_im_ambulance" style="width:125%">
       <div class="figcaption">
         <code>Ambulance</code>
       </div>
@@ -680,70 +628,67 @@ figcaption .strong_, {
 
 <div class="row">
   <!-- Assault Rifle -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_413_assault rifle_typical.png" alt="typical_im_rifle" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_413_assault rifle_typical.png" alt="typical_im_rifle" style="width:125%">
       <div class="figcaption">
         <code>Assault Rifle</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_413_assault rifle_corrupted.png" alt="corrupted_im_rifle" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_413_assault rifle_corrupted.png" alt="corrupted_im_rifle" style="width:125%">
       <div class="figcaption">
         <code>Assault Rifle</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_413_assault rifle_atypical.png" alt="atypical_im_rifle" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_413_assault rifle_atypical.png" alt="atypical_im_rifle" style="width:125%">
       <div class="figcaption">
         <code>Assault Rifle</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_413_assault rifle_random_outputs.png" alt="random_outputs_im_rifle" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_413_assault rifle_random_outputs.png" alt="random_outputs_im_rifle" style="width:125%">
       <div class="figcaption">
         <code>Assault Rifle</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Balloon -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_417_balloon_typical.png" alt="typical_im_balloon" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_417_balloon_typical.png" alt="typical_im_balloon" style="width:125%">
       <div class="figcaption">
         <code>Balloon</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_417_balloon_corrupted.png" alt="corrupted_im_balloon" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_417_balloon_corrupted.png" alt="corrupted_im_balloon" style="width:125%">
       <div class="figcaption">
         <code>Balloon</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_417_balloon_atypical.png" alt="atypical_im_balloon" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_417_balloon_atypical.png" alt="atypical_im_balloon" style="width:125%">
       <div class="figcaption">
         <code>Balloon</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_417_balloon_random_outputs.png" alt="random_outputs_im_balloon" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_417_balloon_random_outputs.png" alt="random_outputs_im_balloon" style="width:125%">
       <div class="figcaption">
         <code>Balloon</code>
       </div>
@@ -755,70 +700,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Bathtub -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_435_bathtub_typical.png" alt="typical_im_bathtub" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_435_bathtub_typical.png" alt="typical_im_bathtub" style="width:125%">
       <div class="figcaption">
         <code>Bathtub</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_435_bathtub_corrupted.png" alt="corrupted_im_bathtub" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_435_bathtub_corrupted.png" alt="corrupted_im_bathtub" style="width:125%">
       <div class="figcaption">
         <code>Bathtub</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_435_bathtub_atypical.png" alt="atypical_im_bathtub" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_435_bathtub_atypical.png" alt="atypical_im_bathtub" style="width:125%">
       <div class="figcaption">
         <code>Bathtub</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_435_bathtub_random_outputs.png" alt="typical_im_bathtub" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_435_bathtub_random_outputs.png" alt="typical_im_bathtub" style="width:125%">
       <div class="figcaption">
         <code>Bathtub</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Bulletproof Vest -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_465_bulletproof vest_typical.png" alt="typical_im_bulletproof_vest" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_465_bulletproof vest_typical.png" alt="typical_im_bulletproof_vest" style="width:125%">
       <div class="figcaption">
         <code>Bulletproof Vest</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_465_bulletproof vest_corrupted.png" alt="corrupted_im_bulletproof_vest" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_465_bulletproof vest_corrupted.png" alt="corrupted_im_bulletproof_vest" style="width:125%">
       <div class="figcaption">
         <code>Bulletproof Vest</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_465_bulletproof vest_atypical.png" alt="atypical_im_bulletproof_vest" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_465_bulletproof vest_atypical.png" alt="atypical_im_bulletproof_vest" style="width:125%">
       <div class="figcaption">
         <code>Bulletproof Vest</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_465_bulletproof vest_random_outputs.png" alt="random_outputs_im_bulletproof_vest" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_465_bulletproof vest_random_outputs.png" alt="random_outputs_im_bulletproof_vest" style="width:125%">
       <div class="figcaption">
         <code>Bulletproof Vest</code>
       </div>
@@ -831,70 +773,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Cannon -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_471_cannon_typical.png" alt="typical_im_cannon" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_471_cannon_typical.png" alt="typical_im_cannon" style="width:125%">
       <div class="figcaption">
         <code>Cannon</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_471_cannon_corrupted.png" alt="corrupted_im_cannon" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_471_cannon_corrupted.png" alt="corrupted_im_cannon" style="width:125%">
       <div class="figcaption">
         <code>Cannon</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_471_cannon_atypical.png" alt="atypical_im_cannon" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_471_cannon_atypical.png" alt="atypical_im_cannon" style="width:125%">
       <div class="figcaption">
         <code>Cannon</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_471_cannon_random_outputs.png" alt="random_outputs_im_cannon" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_471_cannon_random_outputs.png" alt="random_outputs_im_cannon" style="width:125%">
       <div class="figcaption">
         <code>Cannon</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Container Ship -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_510_container ship_typical.png" alt="typical_im_container_ship" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_510_container ship_typical.png" alt="typical_im_container_ship" style="width:125%">
       <div class="figcaption">
         <code>Container Ship</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_510_container ship_corrupted.png" alt="corrupted_im_container_ship" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_510_container ship_corrupted.png" alt="corrupted_im_container_ship" style="width:125%">
       <div class="figcaption">
         <code>Container Ship</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_510_container ship_atypical.png" alt="atypical_im_container_ship" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_510_container ship_atypical.png" alt="atypical_im_container_ship" style="width:125%">
       <div class="figcaption">
         <code>Container Ship</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_510_container ship_random_outputs.png" alt="random_outputs_im_container_ship" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_510_container ship_random_outputs.png" alt="random_outputs_im_container_ship" style="width:125%">
       <div class="figcaption">
         <code>Container Ship</code>
       </div>
@@ -907,70 +846,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Desktop Computer -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_527_desktop computer_typical.png" alt="typical_im_desktop_computer" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_527_desktop computer_typical.png" alt="typical_im_desktop_computer" style="width:125%">
       <div class="figcaption">
         <code>Desktop Computer</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_527_desktop computer_corrupted.png" alt="corrupted_im_desktop_computer" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_527_desktop computer_corrupted.png" alt="corrupted_im_desktop_computer" style="width:125%">
       <div class="figcaption">
         <code>Desktop Computer</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_527_desktop computer_atypical.png" alt="atypical_im_desktop_computer" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_527_desktop computer_atypical.png" alt="atypical_im_desktop_computer" style="width:125%">
       <div class="figcaption">
         <code>Desktop Computer</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_527_desktop computer_random_outputs.png" alt="random_outputs_im_desktop_computer" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_527_desktop computer_random_outputs.png" alt="random_outputs_im_desktop_computer" style="width:125%">
       <div class="figcaption">
         <code>Desktop Computer</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Digital Watch -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_531_digital watch_typical.png" alt="typical_im_digital_watch" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_531_digital watch_typical.png" alt="typical_im_digital_watch" style="width:125%">
       <div class="figcaption">
         <code>Digital Watch</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_531_digital watch_corrupted.png" alt="corrupted_im_digital_watch" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_531_digital watch_corrupted.png" alt="corrupted_im_digital_watch" style="width:125%">
       <div class="figcaption">
         <code>Digital Watch</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_531_digital watch_atypical.png" alt="atypical_im_digital_watch" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_531_digital watch_atypical.png" alt="atypical_im_digital_watch" style="width:125%">
       <div class="figcaption">
         <code>Digital Watch</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_531_digital watch_random_outputs.png" alt="random_outputs_im_digital_watch" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_531_digital watch_random_outputs.png" alt="random_outputs_im_digital_watch" style="width:125%">
       <div class="figcaption">
         <code>Digital Watch</code>
       </div>
@@ -983,70 +919,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Garbage Truck -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_569_garbage truck_typical.png" alt="typical_im_garbage_truck" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_569_garbage truck_typical.png" alt="typical_im_garbage_truck" style="width:125%">
       <div class="figcaption">
         <code>Garbage Truck</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_569_garbage truck_corrupted.png" alt="corrupted_im_garbage_truck" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_569_garbage truck_corrupted.png" alt="corrupted_im_garbage_truck" style="width:125%">
       <div class="figcaption">
         <code>Garbage Truck</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_569_garbage truck_atypical.png" alt="atypical_im_garbage_truck" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_569_garbage truck_atypical.png" alt="atypical_im_garbage_truck" style="width:125%">
       <div class="figcaption">
         <code>Garbage Truck</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_569_garbage truck_random_outputs.png" alt="random_outputs_im_garbage_truck" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_569_garbage truck_random_outputs.png" alt="random_outputs_im_garbage_truck" style="width:125%">
       <div class="figcaption">
         <code>Garbage Truck</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- iPod -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_605_iPod_typical.png" alt="typical_im_ipod" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_605_iPod_typical.png" alt="typical_im_ipod" style="width:125%">
       <div class="figcaption">
         <code>iPod</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_605_iPod_corrupted.png" alt="corrupted_im_ipod" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_605_iPod_corrupted.png" alt="corrupted_im_ipod" style="width:125%">
       <div class="figcaption">
         <code>iPod</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_605_iPod_atypical.png" alt="atypical_im_ipod" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_605_iPod_atypical.png" alt="atypical_im_ipod" style="width:125%">
       <div class="figcaption">
         <code>iPod</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_605_iPod_random_outputs.png" alt="random_outputs_im_ipod" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_605_iPod_random_outputs.png" alt="random_outputs_im_ipod" style="width:125%">
       <div class="figcaption">
         <code>iPod</code>
       </div>
@@ -1059,70 +992,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Microwave -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_651_microwave_typical.png" alt="typical_im_microwave" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_651_microwave_typical.png" alt="typical_im_microwave" style="width:125%">
       <div class="figcaption">
         <code>Microwave</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_651_microwave_corrupted.png" alt="corrupted_im_microwave" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_651_microwave_corrupted.png" alt="corrupted_im_microwave" style="width:125%">
       <div class="figcaption">
         <code>Microwave</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_651_microwave_atypical.png" alt="atypical_im_microwave" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_651_microwave_atypical.png" alt="atypical_im_microwave" style="width:125%">
       <div class="figcaption">
         <code>Microwave</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_651_microwave_random_outputs.png" alt="random_outputs_im_microwave" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_651_microwave_random_outputs.png" alt="random_outputs_im_microwave" style="width:125%">
       <div class="figcaption">
         <code>Microwave</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Milk can -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_653_milk can_typical.png" alt="typical_im_milk_can" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_653_milk can_typical.png" alt="typical_im_milk_can" style="width:125%">
       <div class="figcaption">
         <code>Milk Can</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_653_milk can_corrupted.png" alt="corrupted_im_milk_can" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_653_milk can_corrupted.png" alt="corrupted_im_milk_can" style="width:125%">
       <div class="figcaption">
         <code>Milk Can</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_653_milk can_atypical.png" alt="atypical_im_milk_can" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_653_milk can_atypical.png" alt="atypical_im_milk_can" style="width:125%">
       <div class="figcaption">
         <code>Milk Can</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_653_milk can_random_outputs.png" alt="random_outputs_im_milk_can" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_653_milk can_random_outputs.png" alt="random_outputs_im_milk_can" style="width:125%">
       <div class="figcaption">
         <code>Milk Can</code>
       </div>
@@ -1135,70 +1065,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Missile -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_657_missile_typical.png" alt="typical_im_missile" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_657_missile_typical.png" alt="typical_im_missile" style="width:125%">
       <div class="figcaption">
         <code>Missile</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_657_missile_corrupted.png" alt="corrupted_im_missile" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_657_missile_corrupted.png" alt="corrupted_im_missile" style="width:125%">
       <div class="figcaption">
         <code>Missile</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_657_missile_atypical.png" alt="atypical_im_missile" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_657_missile_atypical.png" alt="atypical_im_missile" style="width:125%">
       <div class="figcaption">
         <code>Missile</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_657_missile_random_outputs.png" alt="random_outputs_im_missile" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_657_missile_random_outputs.png" alt="random_outputs_im_missile" style="width:125%">
       <div class="figcaption">
         <code>Missile</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Mountain bike -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_671_mountain bike_typical.png" alt="typical_im_mountain_bike" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_671_mountain bike_typical.png" alt="typical_im_mountain_bike" style="width:125%">
       <div class="figcaption">
         <code>Mountain Bike</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_671_mountain bike_corrupted.png" alt="corrupted_im_mountain_bike" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_671_mountain bike_corrupted.png" alt="corrupted_im_mountain_bike" style="width:125%">
       <div class="figcaption">
         <code>Mountain Bike</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_671_mountain bike_atypical.png" alt="atypical_im_mountain_bike" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_671_mountain bike_atypical.png" alt="atypical_im_mountain_bike" style="width:125%">
       <div class="figcaption">
         <code>Mountain Bike</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_671_mountain bike_random_outputs.png" alt="random_outputs_im_mountain_bike" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_671_mountain bike_random_outputs.png" alt="random_outputs_im_mountain_bike" style="width:125%">
       <div class="figcaption">
         <code>Mountain Bike</code>
       </div>
@@ -1211,70 +1138,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Plastic bag -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_728_plastic bag_typical.png" alt="typical_im_plastic_bag" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_728_plastic bag_typical.png" alt="typical_im_plastic_bag" style="width:125%">
       <div class="figcaption">
         <code>Plastic Bag</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_728_plastic bag_corrupted.png" alt="corrupted_im_plastic_bag" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_728_plastic bag_corrupted.png" alt="corrupted_im_plastic_bag" style="width:125%">
       <div class="figcaption">
         <code>Plastic Bag</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_728_plastic bag_atypical.png" alt="atypical_im_plastic_bag" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_728_plastic bag_atypical.png" alt="atypical_im_plastic_bag" style="width:125%">
       <div class="figcaption">
         <code>Plastic Bag</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_728_plastic bag_random_outputs.png" alt="random_outputs_im_plastic_bag" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_728_plastic bag_random_outputs.png" alt="random_outputs_im_plastic_bag" style="width:125%">
       <div class="figcaption">
         <code>Plastic Bag</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Safe -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_771_safe_typical.png" alt="typical_im_safe" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_771_safe_typical.png" alt="typical_im_safe" style="width:125%">
       <div class="figcaption">
         <code>Safe</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_771_safe_corrupted.png" alt="corrupted_im_safe" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_771_safe_corrupted.png" alt="corrupted_im_safe" style="width:125%">
       <div class="figcaption">
         <code>Safe</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_771_safe_atypical.png" alt="atypical_im_safe" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_771_safe_atypical.png" alt="atypical_im_safe" style="width:125%">
       <div class="figcaption">
         <code>Safe</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_771_safe_random_outputs.png" alt="random_outputs_im_safe" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_771_safe_random_outputs.png" alt="random_outputs_im_safe" style="width:125%">
       <div class="figcaption">
         <code>Safe</code>
       </div>
@@ -1287,70 +1211,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Tank -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_847_tank_typical.png" alt="typical_im_tank" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_847_tank_typical.png" alt="typical_im_tank" style="width:125%">
       <div class="figcaption">
         <code>Tank</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_847_tank_corrupted.png" alt="corrupted_im_tank" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_847_tank_corrupted.png" alt="corrupted_im_tank" style="width:125%">
       <div class="figcaption">
         <code>Tank</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_847_tank_atypical.png" alt="atypical_im_tank" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_847_tank_atypical.png" alt="atypical_im_tank" style="width:125%">
       <div class="figcaption">
         <code>Tank</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_847_tank_random_outputs.png" alt="random_outputs_im_tank" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_847_tank_random_outputs.png" alt="random_outputs_im_tank" style="width:125%">
       <div class="figcaption">
         <code>Tank</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Toaster -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_859_toaster_typical.png" alt="typical_im_toaster" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_859_toaster_typical.png" alt="typical_im_toaster" style="width:125%">
       <div class="figcaption">
         <code>Toaster</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_859_toaster_corrupted.png" alt="corrupted_im_toaster" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_859_toaster_corrupted.png" alt="corrupted_im_toaster" style="width:125%">
       <div class="figcaption">
         <code>Toaster</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_859_toaster_atypical.png" alt="atypical_im_toaster" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_859_toaster_atypical.png" alt="atypical_im_toaster" style="width:125%">
       <div class="figcaption">
         <code>Toaster</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_859_toaster_random_outputs.png" alt="random_outputs_im_toaster" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_859_toaster_random_outputs.png" alt="random_outputs_im_toaster" style="width:125%">
       <div class="figcaption">
         <code>Toaster</code>
       </div>
@@ -1363,70 +1284,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Whiskey Jug -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_901_whiskey jug_typical.png" alt="typical_im_whiskey_jug" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_901_whiskey jug_typical.png" alt="typical_im_whiskey_jug" style="width:125%">
       <div class="figcaption">
         <code>Whiskey Jug</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_901_whiskey jug_typical.png" alt="corrupted_im_whiskey_jug" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_901_whiskey jug_typical.png" alt="corrupted_im_whiskey_jug" style="width:125%">
       <div class="figcaption">
         <code>Whiskey Jug</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_901_whiskey jug_atypical.png" alt="atypical_im_whiskey_jug" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_901_whiskey jug_atypical.png" alt="atypical_im_whiskey_jug" style="width:125%">
       <div class="figcaption">
         <code>Whiskey Jug</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_901_whiskey jug_random_outputs.png" alt="random_outputs_im_whiskey_jug" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_901_whiskey jug_random_outputs.png" alt="random_outputs_im_whiskey_jug" style="width:125%">
       <div class="figcaption">
         <code>Whiskey Jug</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Street sign -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_919_street sign_typical.png" alt="typical_im_street_sign" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_919_street sign_typical.png" alt="typical_im_street_sign" style="width:125%">
       <div class="figcaption">
         <code>Street Sign</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_919_street sign_corrupted.png" alt="corrupted_im_street_sign" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_919_street sign_corrupted.png" alt="corrupted_im_street_sign" style="width:125%">
       <div class="figcaption">
         <code>Street Sign</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_919_street sign_atypical.png" alt="atypical_im_street_sign" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_919_street sign_atypical.png" alt="atypical_im_street_sign" style="width:125%">
       <div class="figcaption">
         <code>Street Sign</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_919_street sign_random_outputs.png" alt="random_outputs_im_street_sign" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_919_street sign_random_outputs.png" alt="random_outputs_im_street_sign" style="width:125%">
       <div class="figcaption">
         <code>Street Sign</code>
       </div>
@@ -1439,70 +1357,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Pineapple -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_953_pineapple_typical.png" alt="typical_im_pineapple" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_953_pineapple_typical.png" alt="typical_im_pineapple" style="width:125%">
       <div class="figcaption">
         <code>Pineapple</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_953_pineapple_corrupted.png" alt="corrupted_im_pineapple" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_953_pineapple_corrupted.png" alt="corrupted_im_pineapple" style="width:125%">
       <div class="figcaption">
         <code>Pineapple</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_953_pineapple_atypical.png" alt="atypical_im_pineapple" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_953_pineapple_atypical.png" alt="atypical_im_pineapple" style="width:125%">
       <div class="figcaption">
         <code>Pineapple</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_953_pineapple_random_outputs.png" alt="random_outputs_im_pineapple" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_953_pineapple_random_outputs.png" alt="random_outputs_im_pineapple" style="width:125%">
       <div class="figcaption">
         <code>Pineapple</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Banana -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_954_banana_typical.png" alt="typical_im_banana" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_954_banana_typical.png" alt="typical_im_banana" style="width:125%">
       <div class="figcaption">
         <code>Banana</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_954_banana_corrupted.png" alt="corrupted_im_banana" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_954_banana_corrupted.png" alt="corrupted_im_banana" style="width:125%">
       <div class="figcaption">
         <code>Banana</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_954_banana_atypical.png" alt="atypical_im_banana" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_954_banana_atypical.png" alt="atypical_im_banana" style="width:125%">
       <div class="figcaption">
         <code>Banana</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/ImageNet_complete_traj_train_cls_954_banana_random_outputs.png" alt="random_outputs_im_banana" style="width:125%">
+      <img src="./figures/mapd_images/ImageNet_complete_traj_train_cls_954_banana_random_outputs.png" alt="random_outputs_im_banana" style="width:125%">
       <div class="figcaption">
         <code>Banana</code>
       </div>
@@ -1528,71 +1443,68 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Baby -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_2_baby_typical.png" alt="typical_cifar100_baby" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_2_baby_typical.png" alt="typical_cifar100_baby" style="width:125%">
       <div class="figcaption">
         <code>Baby</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_2_baby_corrupted.png" alt="corrupted_cifar100_baby" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_2_baby_corrupted.png" alt="corrupted_cifar100_baby" style="width:125%">
       <div class="figcaption">
         <code>Baby</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_2_baby_atypical.png" alt="atypical_cifar100_baby" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_2_baby_atypical.png" alt="atypical_cifar100_baby" style="width:125%">
       <div class="figcaption">
         <code>Baby</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_2_baby_random_outputs.png" alt="random_outputs_cifar100_baby" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_2_baby_random_outputs.png" alt="random_outputs_cifar100_baby" style="width:125%">
       <div class="figcaption">
         <code>Baby</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   
   <!-- Man -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_46_man_typical.png" alt="typical_cifar100_man" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_46_man_typical.png" alt="typical_cifar100_man" style="width:125%">
       <div class="figcaption">
         <code>Man</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_46_man_corrupted.png" alt="corrupted_cifar100_man" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_46_man_corrupted.png" alt="corrupted_cifar100_man" style="width:125%">
       <div class="figcaption">
         <code>Man</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_46_man_atypical.png" alt="atypical_cifar100_man" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_46_man_atypical.png" alt="atypical_cifar100_man" style="width:125%">
       <div class="figcaption">
         <code>Man</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_46_man_random_outputs.png" alt="random_outputs_cifar100_man" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_46_man_random_outputs.png" alt="random_outputs_cifar100_man" style="width:125%">
       <div class="figcaption">
         <code>Man</code>
       </div>
@@ -1606,70 +1518,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Bicycle -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_8_bicycle_typical.png" alt="typical_cifar100_bicycle" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_8_bicycle_typical.png" alt="typical_cifar100_bicycle" style="width:125%">
       <div class="figcaption">
         <code>Bicycle</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_8_bicycle_corrupted.png" alt="corrupted_cifar100_bicycle" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_8_bicycle_corrupted.png" alt="corrupted_cifar100_bicycle" style="width:125%">
       <div class="figcaption">
         <code>Bicycle</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_8_bicycle_atypical.png" alt="atypical_cifar100_bicycle" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_8_bicycle_atypical.png" alt="atypical_cifar100_bicycle" style="width:125%">
       <div class="figcaption">
         <code>Bicycle</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_8_bicycle_random_outputs.png" alt="typical_cifar100_random_outputs" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_8_bicycle_random_outputs.png" alt="typical_cifar100_random_outputs" style="width:125%">
       <div class="figcaption">
         <code>Bicycle</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Bowl -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_10_bowl_typical.png" alt="typical_cifar100_bowl" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_10_bowl_typical.png" alt="typical_cifar100_bowl" style="width:125%">
       <div class="figcaption">
         <code>Bowl</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_10_bowl_corrupted.png" alt="corrupted_cifar100_bowl" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_10_bowl_corrupted.png" alt="corrupted_cifar100_bowl" style="width:125%">
       <div class="figcaption">
         <code>Bowl</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_10_bowl_atypical.png" alt="atypical_cifar100_bowl" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_10_bowl_atypical.png" alt="atypical_cifar100_bowl" style="width:125%">
       <div class="figcaption">
         <code>Bowl</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_10_bowl_random_outputs.png" alt="random_outputs_cifar100_bowl" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_10_bowl_random_outputs.png" alt="random_outputs_cifar100_bowl" style="width:125%">
       <div class="figcaption">
         <code>Bowl</code>
       </div>
@@ -1682,70 +1591,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Clock -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_22_clock_typical.png" alt="typical_cifar100_clock" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_22_clock_typical.png" alt="typical_cifar100_clock" style="width:125%">
       <div class="figcaption">
         <code>Clock</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_22_clock_corrupted.png" alt="corrupted_cifar100_clock" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_22_clock_corrupted.png" alt="corrupted_cifar100_clock" style="width:125%">
       <div class="figcaption">
         <code>Clock</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_22_clock_atypical.png" alt="atypical_cifar100_clock" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_22_clock_atypical.png" alt="atypical_cifar100_clock" style="width:125%">
       <div class="figcaption">
         <code>Clock</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_22_clock_random_outputs.png" alt="random_outputs_cifar100_clock" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_22_clock_random_outputs.png" alt="random_outputs_cifar100_clock" style="width:125%">
       <div class="figcaption">
         <code>Clock</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Cloud -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_23_cloud_typical.png" alt="typical_cifar100_cloud" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_23_cloud_typical.png" alt="typical_cifar100_cloud" style="width:125%">
       <div class="figcaption">
         <code>Cloud</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_23_cloud_corrupted.png" alt="corrupted_cifar100_cloud" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_23_cloud_corrupted.png" alt="corrupted_cifar100_cloud" style="width:125%">
       <div class="figcaption">
         <code>Cloud</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_23_cloud_atypical.png" alt="atypical_cifar100_cloud" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_23_cloud_atypical.png" alt="atypical_cifar100_cloud" style="width:125%">
       <div class="figcaption">
         <code>Cloud</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_23_cloud_random_outputs.png" alt="random_outputs_cifar100_cloud" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_23_cloud_random_outputs.png" alt="random_outputs_cifar100_cloud" style="width:125%">
       <div class="figcaption">
         <code>Cloud</code>
       </div>
@@ -1758,70 +1664,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Couch -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_25_couch_typical.png" alt="typical_cifar100_couch" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_25_couch_typical.png" alt="typical_cifar100_couch" style="width:125%">
       <div class="figcaption">
         <code>Couch</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_25_couch_corrupted.png" alt="corrupted_cifar100_couch" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_25_couch_corrupted.png" alt="corrupted_cifar100_couch" style="width:125%">
       <div class="figcaption">
         <code>Couch</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_25_couch_atypical.png" alt="atypical_cifar100_couch" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_25_couch_atypical.png" alt="atypical_cifar100_couch" style="width:125%">
       <div class="figcaption">
         <code>Couch</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_25_couch_random_outputs.png" alt="random_outputs_cifar100_couch" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_25_couch_random_outputs.png" alt="random_outputs_cifar100_couch" style="width:125%">
       <div class="figcaption">
         <code>Couch</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Crab -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_26_crab_typical.png" alt="typical_cifar100_crab" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_26_crab_typical.png" alt="typical_cifar100_crab" style="width:125%">
       <div class="figcaption">
         <code>Crab</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_26_crab_corrupted.png" alt="corrupted_cifar100_crab" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_26_crab_corrupted.png" alt="corrupted_cifar100_crab" style="width:125%">
       <div class="figcaption">
         <code>Crab</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_26_crab_atypical.png" alt="atypical_cifar100_crab" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_26_crab_atypical.png" alt="atypical_cifar100_crab" style="width:125%">
       <div class="figcaption">
         <code>Crab</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_26_crab_random_outputs.png" alt="random_outputs_cifar100_crab" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_26_crab_random_outputs.png" alt="random_outputs_cifar100_crab" style="width:125%">
       <div class="figcaption">
         <code>Crab</code>
       </div>
@@ -1834,70 +1737,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Dinosaur -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_29_dinosaur_typical.png" alt="typical_cifar100_dinosaur" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_29_dinosaur_typical.png" alt="typical_cifar100_dinosaur" style="width:125%">
       <div class="figcaption">
         <code>Dinosaur</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_29_dinosaur_corrupted.png" alt="typical_cifar100_dinosaur" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_29_dinosaur_corrupted.png" alt="typical_cifar100_dinosaur" style="width:125%">
       <div class="figcaption">
         <code>Dinosaur</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_29_dinosaur_atypical.png" alt="atypical_cifar100_dinosaur" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_29_dinosaur_atypical.png" alt="atypical_cifar100_dinosaur" style="width:125%">
       <div class="figcaption">
         <code>Dinosaur</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_29_dinosaur_random_outputs.png" alt="random_outputs_cifar100_dinosaur" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_29_dinosaur_random_outputs.png" alt="random_outputs_cifar100_dinosaur" style="width:125%">
       <div class="figcaption">
         <code>Dinosaur</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Flatfish -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_32_flatfish_typical.png" alt="typical_cifar100_flatfish" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_32_flatfish_typical.png" alt="typical_cifar100_flatfish" style="width:125%">
       <div class="figcaption">
         <code>Flatfish</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_32_flatfish_corrupted.png" alt="corrupted_cifar100_flatfish" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_32_flatfish_corrupted.png" alt="corrupted_cifar100_flatfish" style="width:125%">
       <div class="figcaption">
         <code>Flatfish</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_32_flatfish_atypical.png" alt="atypical_cifar100_flatfish" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_32_flatfish_atypical.png" alt="atypical_cifar100_flatfish" style="width:125%">
       <div class="figcaption">
         <code>Flatfish</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_32_flatfish_random_outputs.png" alt="random_outputs_cifar100_flatfish" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_32_flatfish_random_outputs.png" alt="random_outputs_cifar100_flatfish" style="width:125%">
       <div class="figcaption">
         <code>Flatfish</code>
       </div>
@@ -1910,70 +1810,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Lion -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_43_lion_typical.png" alt="typical_cifar100_lion" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_43_lion_typical.png" alt="typical_cifar100_lion" style="width:125%">
       <div class="figcaption">
         <code>Lion</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_43_lion_corrupted.png" alt="corrupted_cifar100_lion" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_43_lion_corrupted.png" alt="corrupted_cifar100_lion" style="width:125%">
       <div class="figcaption">
         <code>Lion</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_43_lion_atypical.png" alt="atypical_cifar100_lion" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_43_lion_atypical.png" alt="atypical_cifar100_lion" style="width:125%">
       <div class="figcaption">
         <code>Lion</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_43_lion_random_outputs.png" alt="random_outputs_cifar100_lion" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_43_lion_random_outputs.png" alt="random_outputs_cifar100_lion" style="width:125%">
       <div class="figcaption">
         <code>Lion</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- House -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_37_house_typical.png" alt="typical_cifar100_house" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_37_house_typical.png" alt="typical_cifar100_house" style="width:125%">
       <div class="figcaption">
         <code>House</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_37_house_corrupted.png" alt="corrupted_cifar100_house" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_37_house_corrupted.png" alt="corrupted_cifar100_house" style="width:125%">
       <div class="figcaption">
         <code>House</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_37_house_atypical.png" alt="atypical_cifar100_house" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_37_house_atypical.png" alt="atypical_cifar100_house" style="width:125%">
       <div class="figcaption">
         <code>House</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_37_house_random_outputs.png" alt="random_outputs_cifar100_house" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_37_house_random_outputs.png" alt="random_outputs_cifar100_house" style="width:125%">
       <div class="figcaption">
         <code>House</code>
       </div>
@@ -1986,70 +1883,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Lobster -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_45_lobster_typical.png" alt="typical_cifar100_lobster" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_45_lobster_typical.png" alt="typical_cifar100_lobster" style="width:125%">
       <div class="figcaption">
         <code>Lobster</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_45_lobster_corrupted.png" alt="corrupted_cifar100_lobster" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_45_lobster_corrupted.png" alt="corrupted_cifar100_lobster" style="width:125%">
       <div class="figcaption">
         <code>Lobster</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_45_lobster_atypical.png" alt="atypical_cifar100_lobster" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_45_lobster_atypical.png" alt="atypical_cifar100_lobster" style="width:125%">
       <div class="figcaption">
         <code>Lobster</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_45_lobster_random_outputs.png" alt="random_outputs_cifar100_lobster" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_45_lobster_random_outputs.png" alt="random_outputs_cifar100_lobster" style="width:125%">
       <div class="figcaption">
         <code>Lobster</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Porcupine -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_63_porcupine_typical.png" alt="typical_cifar100_porcupine" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_63_porcupine_typical.png" alt="typical_cifar100_porcupine" style="width:125%">
       <div class="figcaption">
         <code>Porcupine</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_63_porcupine_corrupted.png" alt="corrupted_cifar100_porcupine" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_63_porcupine_corrupted.png" alt="corrupted_cifar100_porcupine" style="width:125%">
       <div class="figcaption">
         <code>Porcupine</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_63_porcupine_atypical.png" alt="atypical_cifar100_porcupine" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_63_porcupine_atypical.png" alt="atypical_cifar100_porcupine" style="width:125%">
       <div class="figcaption">
         <code>Porcupine</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_63_porcupine_random_outputs.png" alt="random_outputs_cifar100_porcupine" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_63_porcupine_random_outputs.png" alt="random_outputs_cifar100_porcupine" style="width:125%">
       <div class="figcaption">
         <code>Porcupine</code>
       </div>
@@ -2062,70 +1956,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Bee -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_6_bee_typical.png" alt="typical_cifar100_bee" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_6_bee_typical.png" alt="typical_cifar100_bee" style="width:125%">
       <div class="figcaption">
         <code>Bee</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_6_bee_corrupted.png" alt="corrupted_cifar100_bee" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_6_bee_corrupted.png" alt="corrupted_cifar100_bee" style="width:125%">
       <div class="figcaption">
         <code>Bee</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_6_bee_atypical.png" alt="atypical_cifar100_bee" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_6_bee_atypical.png" alt="atypical_cifar100_bee" style="width:125%">
       <div class="figcaption">
         <code>Bee</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_6_bee_random_outputs.png" alt="random_outputs_cifar100_bee" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_6_bee_random_outputs.png" alt="random_outputs_cifar100_bee" style="width:125%">
       <div class="figcaption">
         <code>Bee</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Ray -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_67_ray_typical.png" alt="typical_cifar100_ray" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_67_ray_typical.png" alt="typical_cifar100_ray" style="width:125%">
       <div class="figcaption">
         <code>Ray</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_67_ray_corrupted.png" alt="corrupted_cifar100_ray" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_67_ray_corrupted.png" alt="corrupted_cifar100_ray" style="width:125%">
       <div class="figcaption">
         <code>Ray</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_67_ray_atypical.png" alt="atypical_cifar100_ray" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_67_ray_atypical.png" alt="atypical_cifar100_ray" style="width:125%">
       <div class="figcaption">
         <code>Ray</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_67_ray_random_outputs.png" alt="random_outputs_cifar100_ray" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_67_ray_random_outputs.png" alt="random_outputs_cifar100_ray" style="width:125%">
       <div class="figcaption">
         <code>Ray</code>
       </div>
@@ -2138,70 +2029,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Plate -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_61_plate_typical.png" alt="typical_cifar100_plate" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_61_plate_typical.png" alt="typical_cifar100_plate" style="width:125%">
       <div class="figcaption">
         <code>Plate</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_61_plate_corrupted.png" alt="corrupted_cifar100_plate" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_61_plate_corrupted.png" alt="corrupted_cifar100_plate" style="width:125%">
       <div class="figcaption">
         <code>Plate</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_61_plate_atypical.png" alt="atypical_cifar100_plate" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_61_plate_atypical.png" alt="atypical_cifar100_plate" style="width:125%">
       <div class="figcaption">
         <code>Plate</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_61_plate_random_outputs.png" alt="random_outputs_cifar100_plate" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_61_plate_random_outputs.png" alt="random_outputs_cifar100_plate" style="width:125%">
       <div class="figcaption">
         <code>Plate</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Sea -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_71_sea_typical.png" alt="typical_cifar100_sea" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_71_sea_typical.png" alt="typical_cifar100_sea" style="width:125%">
       <div class="figcaption">
         <code>Sea</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_71_sea_corrupted.png" alt="corrupted_cifar100_sea" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_71_sea_corrupted.png" alt="corrupted_cifar100_sea" style="width:125%">
       <div class="figcaption">
         <code>Sea</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_71_sea_atypical.png" alt="atypical_cifar100_sea" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_71_sea_atypical.png" alt="atypical_cifar100_sea" style="width:125%">
       <div class="figcaption">
         <code>Sea</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_71_sea_random_outputs.png" alt="random_outputs_cifar100_sea" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_71_sea_random_outputs.png" alt="random_outputs_cifar100_sea" style="width:125%">
       <div class="figcaption">
         <code>Sea</code>
       </div>
@@ -2215,70 +2103,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Table -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_84_table_typical.png" alt="typical_cifar100_table" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_84_table_typical.png" alt="typical_cifar100_table" style="width:125%">
       <div class="figcaption">
         <code>Table</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_84_table_corrupted.png" alt="corrupted_cifar100_table" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_84_table_corrupted.png" alt="corrupted_cifar100_table" style="width:125%">
       <div class="figcaption">
         <code>Table</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_84_table_atypical.png" alt="atypical_cifar100_table" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_84_table_atypical.png" alt="atypical_cifar100_table" style="width:125%">
       <div class="figcaption">
         <code>Table</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_84_table_random_outputs.png" alt="random_outputs_cifar100_table" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_84_table_random_outputs.png" alt="random_outputs_cifar100_table" style="width:125%">
       <div class="figcaption">
         <code>Table</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Skyscraper -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_76_skyscraper_typical.png" alt="typical_cifar100_skyscraper" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_76_skyscraper_typical.png" alt="typical_cifar100_skyscraper" style="width:125%">
       <div class="figcaption">
         <code>Skyscraper</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_76_skyscraper_corrupted.png" alt="corrupted_cifar100_skyscraper" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_76_skyscraper_corrupted.png" alt="corrupted_cifar100_skyscraper" style="width:125%">
       <div class="figcaption">
         <code>Skyscraper</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_76_skyscraper_atypical.png" alt="atypical_cifar100_skyscraper" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_76_skyscraper_atypical.png" alt="atypical_cifar100_skyscraper" style="width:125%">
       <div class="figcaption">
         <code>Skyscraper</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_76_skyscraper_random_outputs.png" alt="random_outputs_cifar100_skyscraper" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_76_skyscraper_random_outputs.png" alt="random_outputs_cifar100_skyscraper" style="width:125%">
       <div class="figcaption">
         <code>Skyscraper</code>
       </div>
@@ -2291,70 +2176,67 @@ figcaption .strong_, {
 <div class="row">
 
   <!-- Telephone -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_86_telephone_typical.png" alt="typical_cifar100_telephone" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_86_telephone_typical.png" alt="typical_cifar100_telephone" style="width:125%">
       <div class="figcaption">
         <code>Telephone</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_86_telephone_corrupted.png" alt="corrupted_cifar100_telephone" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_86_telephone_corrupted.png" alt="corrupted_cifar100_telephone" style="width:125%">
       <div class="figcaption">
         <code>Telephone</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_86_telephone_atypical.png" alt="atypical_cifar100_telephone" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_86_telephone_atypical.png" alt="atypical_cifar100_telephone" style="width:125%">
       <div class="figcaption">
         <code>Telephone</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_86_telephone_random_outputs.png" alt="random_outputs_cifar100_telephone" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_86_telephone_random_outputs.png" alt="random_outputs_cifar100_telephone" style="width:125%">
       <div class="figcaption">
         <code>Telephone</code>
       </div>
     </div>
   </div>
-<!-- END GRID -->
-</div>
 
-<div class="row">
   <!-- Wardrobe -->
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ typical">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_94_wardrobe_typical.png" alt="typical_cifar100_wardrobe" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_94_wardrobe_typical.png" alt="typical_cifar100_wardrobe" style="width:125%">
       <div class="figcaption">
         <code>Wardrobe</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ corrupted">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_94_wardrobe_corrupted.png" alt="typical_cifar100_corrupted" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_94_wardrobe_corrupted.png" alt="typical_cifar100_corrupted" style="width:125%">
       <div class="figcaption">
         <code>Wardrobe</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ atyp">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_94_wardrobe_atypical.png" alt="atypical_cifar100_wardrobe" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_94_wardrobe_atypical.png" alt="atypical_cifar100_wardrobe" style="width:125%">
       <div class="figcaption">
         <code>Wardrobe</code>
       </div>
     </div>
   </div>
-  <div class="column_portfolio_visible">
+  <div class="column_portfolio_ random_outputs">
     <div class="content">
-      <img src="./figures/mapd_images_small/CIFAR-100_cls_94_wardrobe_random_outputs.png" alt="random_outputs_cifar100_wardrobe" style="width:125%">
+      <img src="./figures/mapd_images/CIFAR-100_cls_94_wardrobe_random_outputs.png" alt="random_outputs_cifar100_wardrobe" style="width:125%">
       <div class="figcaption">
         <code>Wardrobe</code>
       </div>
