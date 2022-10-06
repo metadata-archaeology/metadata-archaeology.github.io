@@ -62,6 +62,9 @@ filenames = natsort.natsorted(filenames)
 print("Retrieved files:", len(filenames), filenames[:5])
 
 images = []
+current_frames = {}
+last_category = None
+
 for i, filename in enumerate(filenames):
     img = np.array(imageio.imread(filename))
     
@@ -103,6 +106,14 @@ for i, filename in enumerate(filenames):
     pasted_img = cv2.rectangle(pasted_img, top_left, bottom_right, color=(0, 0, 0, 255), thickness=-1)
     pasted_img = cv2.putText(pasted_img, string, loc, cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255, 255), 2, cv2.LINE_AA)
     
-    images.append(pasted_img)
+    # images.append(pasted_img)
+    if last_category is not None and last_category != class_name:
+        keys = ["typical", "corrupted", "atypical", "random outputs"]
+        for k in keys:
+            images.append(current_frames[k])
+        current_frames = {}
+    
+    last_category = class_name
+    current_frames[probe_category] = pasted_img.copy()
 
 imageio.mimsave('final.gif', images, duration=1)
