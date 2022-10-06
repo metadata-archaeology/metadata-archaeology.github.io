@@ -67,6 +67,7 @@ last_category = None
 
 for i, filename in enumerate(filenames):
     img = np.array(imageio.imread(filename))
+    img = cv2.resize(img, (256, 256))
     
     filename, _ = os.path.splitext(filename)
     class_name = filename.split("_")[8]
@@ -80,33 +81,34 @@ for i, filename in enumerate(filenames):
     pasted_img.fill(255)
     pasted_img[:img.shape[0], :img.shape[1], :] = img
     
+    text_scale = 1.0
+    text_thickness = 2
+    
     # Add boxes for text at the bottom
     starting_margin_px = int(img.shape[0] * 0.05)
     loc = (starting_margin_px, new_shape[0] - starting_margin_px)
     # string = f"{class_name.title()} / {probe_category.title()}"
     string = f"{class_name.title()}"
-    (text_width, text_height), baseline = cv2.getTextSize(string, cv2.FONT_HERSHEY_SIMPLEX, 1.0, 2)
+    (text_width, text_height), baseline = cv2.getTextSize(string, cv2.FONT_HERSHEY_SIMPLEX, text_scale, text_thickness)
     
     box_px_margin = text_height // 2
     
     top_left = (starting_margin_px - box_px_margin, new_shape[0] - starting_margin_px - text_height - box_px_margin)
     bottom_right = (starting_margin_px + text_width + box_px_margin, new_shape[0] - starting_margin_px + box_px_margin)
-    # pasted_img = rounded_rectangle(pasted_img, top_left, bottom_right, radius=-1, color=(255, 0, 0, 255))
     pasted_img = cv2.rectangle(pasted_img, top_left, bottom_right, color=(255, 0, 0, 255), thickness=-1)
-    pasted_img = cv2.putText(pasted_img, string, loc, cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255, 255), 2, cv2.LINE_AA)
+    pasted_img = cv2.putText(pasted_img, string, loc, cv2.FONT_HERSHEY_SIMPLEX, text_scale, (255, 255, 255, 255), text_thickness, cv2.LINE_AA)
     
     # Add probe category on the right
     string = f"{probe_category.title()}"
-    (text_width, text_height), baseline = cv2.getTextSize(string, cv2.FONT_HERSHEY_SIMPLEX, 1.0, 2)
+    (text_width, text_height), baseline = cv2.getTextSize(string, cv2.FONT_HERSHEY_SIMPLEX, text_scale, text_thickness)
     
     top_left = (new_shape[1] - starting_margin_px - box_px_margin - text_width, top_left[1])
     bottom_right = (new_shape[1] - starting_margin_px + box_px_margin, bottom_right[1])
     
     loc = (top_left[0] + box_px_margin, loc[1])
     pasted_img = cv2.rectangle(pasted_img, top_left, bottom_right, color=(0, 0, 0, 255), thickness=-1)
-    pasted_img = cv2.putText(pasted_img, string, loc, cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255, 255), 2, cv2.LINE_AA)
+    pasted_img = cv2.putText(pasted_img, string, loc, cv2.FONT_HERSHEY_SIMPLEX, text_scale, (255, 255, 255, 255), text_thickness, cv2.LINE_AA)
     
-    # images.append(pasted_img)
     if last_category is not None and last_category != class_name:
         keys = ["typical", "corrupted", "atypical", "random outputs"]
         for k in keys:
