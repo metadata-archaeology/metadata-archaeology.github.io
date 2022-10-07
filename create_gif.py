@@ -57,7 +57,7 @@ def rounded_rectangle(src, top_left, bottom_right, radius=1, color=255, thicknes
     return src
 
 
-filenames = glob.glob("figures/mapd_images_small/ImageNet*.png")
+filenames = glob.glob("figures/mapd_images_small_selected/ImageNet*.png")
 filenames = natsort.natsorted(filenames)
 print("Retrieved files:", len(filenames), filenames[:5])
 
@@ -67,11 +67,11 @@ last_category = None
 
 for i, filename in enumerate(filenames):
     img = np.array(imageio.imread(filename))
-    img = cv2.resize(img, (256, 256))
+    # img = cv2.resize(img, (256, 256))
     
-    filename, _ = os.path.splitext(filename)
-    class_name = filename.split("_")[8]
-    probe_category = " ".join(filename.split("_")[9:])
+    filename, _ = os.path.splitext(os.path.split(filename)[1])
+    class_name = filename.split("_")[6]
+    probe_category = " ".join(filename.split("_")[7:])
     print(f"{filename} / {class_name} / {probe_category}")
     
     # Add margin at the bottom
@@ -112,10 +112,11 @@ for i, filename in enumerate(filenames):
     if last_category is not None and last_category != class_name:
         keys = ["typical", "corrupted", "atypical", "random outputs"]
         for k in keys:
+            assert k in current_frames, current_frames.keys()
             images.append(current_frames[k])
         current_frames = {}
     
     last_category = class_name
     current_frames[probe_category] = pasted_img.copy()
 
-imageio.mimsave('final.gif', images, duration=1)
+imageio.mimsave('final.gif', images, duration=2)
